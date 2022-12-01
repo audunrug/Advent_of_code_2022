@@ -10,10 +10,8 @@ with open("day_1_input.txt") as file:
             elf_sums.append(sum(cals))
             cals = []
 
-highest = max(elf_sums)
-print(f"Highest sum of calories carried: {highest}")
+print(f"Highest sum of calories carried: {max(elf_sums)}")
 
 #part 2
 elf_sort = sorted(elf_sums, reverse=True)
-top_three = sum(elf_sort[:3])
-print(f"Highest sum of calories by top three elves: {top_three}")
+print(f"Highest sum of calories by top three elves: {sum(elf_sort[:3])}")
