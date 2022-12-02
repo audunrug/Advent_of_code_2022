@@ -25,9 +25,7 @@ def game_result_p2(shapes):
             return "lose"
 
 #for part 2
-p2_strat = {"X" : "lose",
-            "Y" : "draw",
-            "Z" : "win"}
+p2_strat = {"X" : "lose", "Y" : "draw", "Z" : "win"}
 
 def choose_shape(strat, p1):
     if strat ==  "draw":
@@ -46,7 +44,9 @@ with open("day_2_input.txt", "r") as file:
         result = game_result_p2(shapes)
         tot_score = result_score[result] + shape_score[shapes[1]]
         scores.append(tot_score)
+
 print(f"Sum of scores (part 1): {sum(scores)}") #11449
+
 
 #part 2 solution
 scores_2 = []
@@ -59,4 +59,5 @@ with open("day_2_input.txt", "r") as file:
         #print(p1_shape, p2_shape, strat)
         tot_score = result_score[strat] + shape_score[p2_shape]
         scores_2.append(tot_score)
+
 print(f"Sum of scores (part 2): {sum(scores_2)}") #13187
