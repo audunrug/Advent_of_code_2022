@@ -35,29 +35,21 @@ def choose_shape(strat, p1):
             if game_result_p2([p1, shape]) == strat:
                 return shape
 
-#part 1 solution
-scores = []
-with open("day_2_input.txt", "r") as file:
-    for line in file.read().splitlines():
-        play = line.split(" ")
-        shapes = [p1[play[0]], p2[play[1]]]
-        result = game_result_p2(shapes)
-        tot_score = result_score[result] + shape_score[shapes[1]]
-        scores.append(tot_score)
-
-print(f"Sum of scores (part 1): {sum(scores)}") #11449
-
-
-#part 2 solution
+scores_1 = []
 scores_2 = []
 with open("day_2_input.txt", "r") as file:
     for line in file.read().splitlines():
         play = line.split(" ")
+        #part 1
+        shapes = [p1[play[0]], p2[play[1]]]
+        result = game_result_p2(shapes)
+        scores_1.append(result_score[result] + shape_score[shapes[1]])
+
+        #part 2
         p1_shape = p1[play[0]]
         strat = p2_strat[play[1]]
         p2_shape = choose_shape(strat, p1_shape)
-        #print(p1_shape, p2_shape, strat)
-        tot_score = result_score[strat] + shape_score[p2_shape]
-        scores_2.append(tot_score)
+        scores_2.append(result_score[strat] + shape_score[p2_shape])
 
+print(f"Sum of scores (part 1): {sum(scores_1)}") #11449
 print(f"Sum of scores (part 2): {sum(scores_2)}") #13187
