@@ -44,7 +44,6 @@ with open("day_2_input.txt", "r") as file:
         shapes = [p1[play[0]], p2[play[1]]]
         result = game_result_p2(shapes)
         scores_1.append(result_score[result] + shape_score[shapes[1]])
-
         #part 2
         p1_shape = p1[play[0]]
         strat = p2_strat[play[1]]
