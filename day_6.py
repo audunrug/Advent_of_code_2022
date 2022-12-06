@@ -1,10 +1,10 @@
 def split_by_marker(input_str, l):
     segments = []
     last = 0
-    for i in range(len(full_str)-l):
-        chars = set(full_str[i:i+l])
+    for i in range(len(input_str)-l):
+        chars = set(input_str[i:i+l])
         if len(chars) == l:
-            segments.append(full_str[last:i+l])
+            segments.append(input_str[last:i+l])
             last = i
     return segments
 
