@@ -7,7 +7,7 @@ for letter in "abcdefghijklmnopqrstuvwxyz":
     priorities[letter.upper()] = n + 26
     n += 1
 
-with open("day_3_input.txt", "r") as file:
+with open("inputs/day_3_input.txt", "r") as file:
     lines = file.read().splitlines()
 
 #part 1

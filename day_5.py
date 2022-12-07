@@ -42,7 +42,7 @@ class stack():
         return string
 
 
-with open("day_5_input.txt", "r") as file:
+with open("inputs/day_5_input.txt", "r") as file:
     all = file.read().splitlines()
 start_config = all[:9]
 moves = all[10:]

@@ -8,7 +8,7 @@ def split_by_marker(input_str, l):
             last = i
     return segments
 
-with open("day_6_input.txt", "r") as file:
+with open("inputs/day_6_input.txt", "r") as file:
     full_str = file.read().strip()
 
 part_1 = split_by_marker(full_str, 4)

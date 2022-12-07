@@ -37,7 +37,7 @@ def choose_shape(strat, p1):
 
 scores_1 = []
 scores_2 = []
-with open("day_2_input.txt", "r") as file:
+with open("inputs/day_2_input.txt", "r") as file:
     for line in file.read().splitlines():
         play = line.split(" ")
         #part 1

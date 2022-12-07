@@ -15,7 +15,7 @@ def is_overlap(set_1, set_2):
     else:
         return False
 
-with open("day_4_input.txt", "r") as file:
+with open("inputs/day_4_input.txt", "r") as file:
     lines = file.read().splitlines()
 
 contains = []

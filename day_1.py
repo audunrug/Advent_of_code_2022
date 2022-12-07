@@ -1,5 +1,5 @@
 #part 1
-with open("day_1_input.txt") as file:
+with open("inputs/day_1_input.txt") as file:
     cals = []
     elf_sums = []
     for line in file.readlines():

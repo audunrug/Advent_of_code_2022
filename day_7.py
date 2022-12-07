@@ -1,4 +1,4 @@
-with open("day_7_input.txt", "r") as file:
+with open("inputs/day_7_input.txt", "r") as file:
     lines = file.read().splitlines()
 
 file_tree = {}
@@ -27,6 +27,7 @@ for line in lines[1:]:
         dir_size += int(inputs[0])
 dir_sizes[current_dir] = dir_size # to include size of last dict
 
+# add dir sizes from underlying levels
 for level in range(max(levels), 0, -1):
     for dir in file_tree:
         if len(dir.split('/')) == level:
