@@ -1,7 +1,7 @@
 import numpy as np
 
 class knot():
-    """Input chords must be a double tuple ((),()) """
+    """Input chords must be a double list [[],[]] """
     def __init__(self, input_coords, length):
         self.pos = [input_coords for l in range(length)]
         self.tail_log = [self.pos[-1]]
@@ -24,7 +24,7 @@ class knot():
         for i in range(1, len(self.pos)):
             h = self.pos[i-1].copy()
             t = self.pos[i].copy()
-            if abs(h[0] - t[0])  == 2 and abs(h[1] - t[1]) == 2:
+            if abs(h[0] - t[0]) and abs(h[1] - t[1]) == 2:
                 if h[0] > t[0]:
                     t[0] += 1
                 elif h[0] < t[0]:
@@ -57,7 +57,7 @@ class knot():
             if self.pos[-1] not in self.tail_log:
                 self.tail_log.append(self.pos[-1])
 
-    #visualizing
+    #quick and dirty visualization (which loops around)
     def print_pos(self):
         dim = len(self.pos)
         matrix = np.zeros((dim, dim), dtype=object)
@@ -66,8 +66,6 @@ class knot():
             r, c = self.pos[pos][0] % dim, self.pos[pos][1] % dim
             if pos == 0:
                 matrix[r,c] = "H"
-            elif pos == len(self.pos)-1:
-                matrix[r,c] = "T"
             else:
                 matrix[r,c] = str(pos)
         print(matrix)
