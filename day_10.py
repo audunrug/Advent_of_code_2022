@@ -25,7 +25,6 @@ for line in lines:
                 row += 1
         x += int(line.split(" ")[1])
         marker = [x%40,(x+1)%40, (x+2)%40]
-        print(marker)
 
 print(sum([signals[i] for i in range(19, 220, 40)])) #p1
 for row in screen: #p2
