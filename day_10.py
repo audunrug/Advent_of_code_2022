@@ -8,25 +8,23 @@ for line in lines:
         c += 1
         signals.append(x*c) #p1
         if c%40 in marker and row < 6: #p2
-            screen[row] = screen[row] + "#"
+            screen[row] += "#"
         elif row < 6:
-            screen[row] = screen[row] + "."
+            screen[row] += "."
         if c % 40 == 0:
             row += 1
     else:
         for i in [0,1]:
             c += 1
-            if c % 40 == 0:
-                row += 1
             signals.append(x*(c)) #p1
             if c%40 in marker and row < 6: #p2
-                screen[row] = screen[row] + "#"
+                screen[row] += "#"
             elif row < 6:
-                screen[row] = screen[row] + "."
-
+                screen[row] += "."
+        if c % 40 == 0:
+            row += 1
         x += int(line.split(" ")[1])
         marker = list(range(x, x+3))
-
 
 print(sum([signals[i] for i in range(19, 220, 40)])) #p1
 for row in screen: #p2
