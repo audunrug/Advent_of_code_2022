@@ -24,7 +24,8 @@ class monkey():
                 val += int(self.opr_val)
             else:
                 val += val
-        if self.inspect(val) % self.div == 0:
+        val = self.inspect(val)
+        if val % self.div == 0:
             return val, self.yes_mon
         else:
             return val, self.no_mon
@@ -32,6 +33,7 @@ class monkey():
     def get_item(self, new_element):
         self.items.append(new_element)
 
+#for part 2
 class worse_monkey(monkey):
     def inspect(self, value):
         self.monkeylvl += 1
@@ -39,6 +41,7 @@ class worse_monkey(monkey):
 
     def get_item(self, new_element, monkey_lcm):
         self.items.append(new_element % monkey_lcm)
+
 
 with open("inputs/day_11_input.txt", "r") as file:
     lines = file.read().splitlines()
@@ -53,34 +56,22 @@ for i in range(0, len(lines), 7):
     p1_monkeys.append(monkey(items, opr, val, div, yes, no))
     p2_monkeys.append(worse_monkey(items, opr, val, div, yes, no))
 
+def get_mnk_business(monkeys, rounds, mnk_lcm=False):
+    for n in range(rounds):
+        for i in range(len(monkeys)):
+            for item in monkeys[i].items.copy():
+                throw, new = monkeys[i].throw_item()
+                if not mnk_lcm:
+                    monkeys[new].get_item(throw)
+                else:
+                    monkeys[new].get_item(throw, mnk_lcm)
+    n_levels = [mnk.monkeylvl for mnk in monkeys]
+    sort_levels = sorted(n_levels, reverse=True)
+    return sort_levels[0]*sort_levels[1]
+
 #part 1
-#p1_monkeys = monkey_list.copy()
-for n in range(20):
-    for i in range(len(p1_monkeys)):
-        for item in p1_monkeys[i].items.copy():
+print(get_mnk_business(p1_monkeys, 20))
 
-            throw, new = p1_monkeys[i].throw_item()
-            p1_monkeys[new].get_item(throw)
-            #if n == 1:
-                #print(throw, new)
-            #print(throw, new)
-
-n_throws = [mnk.monkeylvl for mnk in p1_monkeys]
-sort_throws = sorted(n_throws)
-print(sort_throws[-1]*sort_throws[-2])
-print("")
-
-# p2
+#part 2
 monkey_lcm = int(np.prod(np.array([monk.div for monk in p2_monkeys])))
-print(np.array([monk.div for monk in p2_monkeys]))
-print(monkey_lcm)
-for n in range(10000):
-    for i in range(len(p2_monkeys)):
-        for item in p2_monkeys[i].items.copy():
-            throw, new = p2_monkeys[i].throw_item()
-            p2_monkeys[new].get_item(throw, monkey_lcm)
-            #print(throw, new)
-
-n_throws = [mnk.monkeylvl for mnk in p2_monkeys]
-sort_throws = sorted(n_throws)
-print(sort_throws[-1]*sort_throws[-2])
+print(get_mnk_business(p2_monkeys, 10000, monkey_lcm))
